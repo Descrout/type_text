@@ -9,6 +9,7 @@ class TypeText extends StatefulWidget {
     this.text, {
     Key? key,
     required this.duration,
+    this.onType,
     this.style,
     this.strutStyle,
     this.textAlign,
@@ -25,11 +26,14 @@ class TypeText extends StatefulWidget {
 
   final String text;
 
+  /// Every character type callback.
+  final Function(double progress)? onType;
+
   /// Total typing duration.
   ///
   /// Depending on the length of the `text`, the `duration` argument will be divided
-  /// to calculate each character's unit time. Be aware that it cannot be lower than flutter's
-  /// refresh rate. (16 milliseconds for each character)
+  /// to calculate each character's unit time. If you use Duration.zero it will be
+  /// 1 microseconds per character.
   final Duration duration;
 
   final TextStyle? style;
@@ -64,6 +68,9 @@ class TypeTextState extends State<TypeText> {
           currentIdx >= widget.text.length) {
         timer.cancel();
         return;
+      }
+      if (widget.onType != null) {
+        widget.onType!(typedText.length / widget.text.length);
       }
       setState(() {
         typedText += widget.text[currentIdx];
