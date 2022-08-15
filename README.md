@@ -26,4 +26,4 @@ TypeText(
 )
 ```
 
-![showcase](./showcase.gif)
+![showcase](https://github.com/Descrout/type_text/blob/main/showcase.gif)
