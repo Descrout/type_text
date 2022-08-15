@@ -26,4 +26,4 @@ TypeText(
 )
 ```
 
-![showcase](/showcase.gif)
+![showcase](./showcase.gif)
