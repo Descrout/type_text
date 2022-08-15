@@ -1,5 +1,7 @@
 ## Type Text
 
+![showcase](https://github.com/Descrout/type_text/blob/main/showcase.gif)
+
 A simple flutter widget that writes your texts like a typewriter.
 
 ```dart
@@ -25,5 +27,3 @@ TypeText(
     //You can use all the other Text widget fields
 )
 ```
-
-![showcase](https://github.com/Descrout/type_text/blob/main/showcase.gif)
