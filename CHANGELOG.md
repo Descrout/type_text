@@ -9,3 +9,7 @@
 ## 1.0.2
 
 * Readme updated.
+
+## 1.0.3
+
+* Upon text or duration change, typing animation will restart.

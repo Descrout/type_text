@@ -60,24 +60,43 @@ class TypeTextState extends State<TypeText> {
 
   @override
   void initState() {
-    timer = Timer.periodic(
-        Duration(
-            microseconds: widget.duration.inMicroseconds ~/ widget.text.length +
-                1), (timer) {
-      if (typedText.length == widget.text.length ||
-          currentIdx >= widget.text.length) {
-        timer.cancel();
-        return;
-      }
-      if (widget.onType != null) {
-        widget.onType!(typedText.length / widget.text.length);
-      }
-      setState(() {
-        typedText += widget.text[currentIdx];
-        currentIdx++;
-      });
-    });
+    restartTimer();
     super.initState();
+  }
+
+  void restartTimer() {
+    timer?.cancel();
+    timer = Timer.periodic(
+      Duration(
+        microseconds: widget.duration.inMicroseconds ~/ widget.text.length + 1,
+      ),
+      (timer) {
+        if (typedText.length == widget.text.length ||
+            currentIdx >= widget.text.length) {
+          timer.cancel();
+          return;
+        }
+        if (widget.onType != null) {
+          widget.onType!(typedText.length / widget.text.length);
+        }
+        setState(() {
+          typedText += widget.text[currentIdx];
+          currentIdx++;
+        });
+      },
+    );
+  }
+
+  @override
+  void didUpdateWidget(TypeText oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.duration != widget.duration ||
+        oldWidget.text != widget.text) {
+      currentIdx = 0;
+      typedText = "";
+      setState(() {});
+      restartTimer();
+    }
   }
 
   @override
