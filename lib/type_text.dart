@@ -68,19 +68,22 @@ class TypeTextState extends State<TypeText> {
     timer?.cancel();
     timer = Timer.periodic(
       Duration(
-        microseconds: widget.duration.inMicroseconds ~/ widget.text.length + 1,
+        microseconds:
+            widget.duration.inMicroseconds ~/ widget.text.codeUnits.length + 1,
       ),
       (timer) {
-        if (typedText.length == widget.text.length ||
-            currentIdx >= widget.text.length) {
+        final typeTextLength = typedText.codeUnits.length;
+        final widgetTextLength = widget.text.codeUnits.length;
+        if (typeTextLength == widgetTextLength ||
+            currentIdx >= widgetTextLength) {
           timer.cancel();
           return;
         }
         if (widget.onType != null) {
-          widget.onType!(typedText.length / widget.text.length);
+          widget.onType!(typeTextLength / widgetTextLength);
         }
         setState(() {
-          typedText += widget.text[currentIdx];
+          typedText += String.fromCharCode(widget.text.codeUnitAt(currentIdx));
           currentIdx++;
         });
       },
