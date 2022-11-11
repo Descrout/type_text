@@ -1,6 +1,6 @@
 name: type_text
 description: A simple flutter widget that writes your texts like a typewriter.
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/Descrout/type_text.git
 
 environment:

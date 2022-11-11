@@ -1,15 +1,20 @@
-## 1.0.0
+## 1.0.4
 
-* Initial release.
+* Emoji support added.
+* An example added.
 
-## 1.0.1
+## 1.0.3
 
-* onType function added.
+* Upon text or duration change, typing animation will restart.
 
 ## 1.0.2
 
 * Readme updated.
 
-## 1.0.3
+## 1.0.1
 
-* Upon text or duration change, typing animation will restart.
+* onType function added.
+
+## 1.0.0
+
+* Initial release.

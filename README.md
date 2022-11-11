@@ -24,6 +24,9 @@ TypeText(
     Sed ultricies tellus nunc.""",
     duration: const Duration(seconds: 5),
     style: TextStyle(fontSize: 36),
+    onType: (progress) {
+        
+    },
     //You can use all the other Text widget fields
 )
 ```
