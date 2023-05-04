@@ -180,7 +180,7 @@ class TypeRichTextState extends State<TypeRichText> {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      key: ValueKey("rtt_" + currentSpans.length.toString() + typedText),
+      key: ValueKey("rtt_${currentSpans.length}_$typedText"),
       text: getCurrentSpan(),
       strutStyle: widget.strutStyle,
       textAlign: widget.textAlign,
