@@ -1,3 +1,7 @@
+## 1.0.5
+
+* RichText support added.
+
 ## 1.0.4
 
 * Emoji support added.

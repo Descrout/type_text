@@ -30,3 +30,31 @@ TypeText(
     //You can use all the other Text widget fields
 )
 ```
+
+Or you can use it with a RichText.
+
+```dart
+TypeRichText(
+    text: const TextSpan(
+    text: 'Hello ',
+    style: TextStyle(
+        color: Colors.black,
+    ),
+    children: <TextSpan>[
+        TextSpan(
+        text: 'bold',
+        style: TextStyle(
+            fontWeight: FontWeight.bold, color: Colors.red),
+        ),
+        TextSpan(
+        text: ' world!',
+        style: TextStyle(color: Colors.blue),
+        ),
+    ],
+    ),
+    duration: const Duration(seconds: 1),
+    onType: (progress) {
+    debugPrint("Rich text %${(progress * 100).toStringAsFixed(0)} completed.");
+    },
+)
+```

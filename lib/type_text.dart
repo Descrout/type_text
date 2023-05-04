@@ -77,11 +77,10 @@ class TypeTextState extends State<TypeText> {
         if (typeTextLength == widgetTextLength ||
             currentIdx >= widgetTextLength) {
           timer.cancel();
+          widget.onType?.call(1.0);
           return;
         }
-        if (widget.onType != null) {
-          widget.onType!(typeTextLength / widgetTextLength);
-        }
+        widget.onType?.call(typeTextLength / widgetTextLength);
         setState(() {
           typedText += String.fromCharCode(widget.text.codeUnitAt(currentIdx));
           currentIdx++;

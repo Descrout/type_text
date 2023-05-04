@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:type_text/type_text.dart';
+import 'package:type_text/type_rich_text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,14 +41,42 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
-          child: TypeText(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 🙂 Donec sollicitudin velit id finibus aliquet. Curabitur efficitur tortor id magna consequat varius. In ut ultrices lacus, a auctor nibh. Sed porta odio semper metus semper, vitae posuere nisl ornare. Ut rutrum imperdiet ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. ",
-            duration: const Duration(seconds: 10),
-            onType: (progress) {
-              print("%${(progress * 100).toStringAsFixed(1)} completed.");
-            },
-          ),
-        ),
+            child: Column(
+          children: [
+            TypeText(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 🙂 Donec sollicitudin velit id finibus aliquet. ",
+              duration: const Duration(seconds: 1),
+              onType: (progress) {
+                debugPrint(
+                    "Normal text %${(progress * 100).toStringAsFixed(0)} completed.");
+              },
+            ),
+            TypeRichText(
+              text: const TextSpan(
+                text: 'Hello ',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'bold',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
+                  TextSpan(
+                    text: ' world!',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ],
+              ),
+              duration: const Duration(seconds: 1),
+              onType: (progress) {
+                debugPrint(
+                    "Rich text %${(progress * 100).toStringAsFixed(0)} completed.");
+              },
+            )
+          ],
+        )),
       ),
     );
   }
